@@ -174,6 +174,20 @@ namespace Hourglass.Site.Migrations
                     b.ToTable("ServiceCategories");
                 });
 
+            modelBuilder.Entity("Hourglass.Site.Entities.Upload", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<byte[]>("Value")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Uploads");
+                });
+
             modelBuilder.Entity("Hourglass.Site.Entities.User", b =>
                 {
                     b.Property<Guid>("Id")
@@ -244,6 +258,9 @@ namespace Hourglass.Site.Migrations
 
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
+
+                    b.Property<Guid?>("PictureUploadId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("PostalCode")
                         .HasColumnType("nvarchar(max)");
